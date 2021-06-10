@@ -1,79 +1,61 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-// This site has 3 pages, all of which are rendered
-// dynamically in the browser (not server rendered).
-//
-// Although the page does not ever refresh, notice how
-// React Router keeps the URL up to date as you navigate
-// through the site. This preserves the browser history,
-// making sure things like the back button and bookmarks
-// work properly.
+import Container from "@material-ui/core/Container";
+import Paper from "@material-ui/core/Paper";
+import MenuItem from "@material-ui/core/MenuItem";
+import MenuList from "@material-ui/core/MenuList";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+
+import TextTransform from "./pages/TextTransform";
+import App from "./pages/HelloWorld";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingTop: "32px",
+  },
+}));
 
 export default function BasicExample() {
+  const classes = useStyles();
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-        </ul>
-
-        <hr />
-
-        {/*
+      <Container className={classes.root}>
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <Paper>
+              <MenuList>
+                <MenuItem component={Link} to="/">
+                  home
+                </MenuItem>
+                <MenuItem component={Link} to="/text-transform">
+                  text-transform
+                </MenuItem>
+              </MenuList>
+            </Paper>
+          </Grid>
+          <Grid item xs={10}>
+            <Paper>
+              {/*
           A <Switch> looks through all its children <Route>
           elements and renders the first one whose path
           matches the current URL. Use a <Switch> any time
           you have multiple routes, but you want only one
           of them to render at a time
         */}
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-        </Switch>
-      </div>
+              <Switch>
+                <Route exact path="/">
+                  <App />
+                </Route>
+                <Route path="/text-transform">
+                  <TextTransform />
+                </Route>
+              </Switch>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
     </Router>
-  );
-}
-
-// You can think of these components as "pages"
-// in your app.
-
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
   );
 }
