@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: "32px",
   },
+  paper: {
+    padding: "16px",
+  },
 }));
 
 export default function BasicExample() {
@@ -36,23 +39,16 @@ export default function BasicExample() {
             </Paper>
           </Grid>
           <Grid item xs={10}>
-            <Paper>
-              {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
-              <Switch>
-                <Route exact path="/">
+            <Switch>
+              <Route exact path="/">
+                <Paper className={classes.paper}>
                   <App />
-                </Route>
-                <Route path="/text-transform">
-                  <TextTransform />
-                </Route>
-              </Switch>
-            </Paper>
+                </Paper>
+              </Route>
+              <Route path="/text-transform">
+                <TextTransform />
+              </Route>
+            </Switch>
           </Grid>
         </Grid>
       </Container>

@@ -1,0 +1,28 @@
+.section {
+    display: flex;
+    align-items: baseline;
+}
+.chip-wrapper {
+    min-width: 200px;
+}
+.paragraph {
+    margin-left: 16px;
+}
+.tt-none {
+    text-transform: none;
+}
+.tt-capitalize {
+    text-transform: capitalize;
+}
+.tt-lowercase {
+    text-transform: lowercase;
+}
+.tt-uppercase {
+    text-transform: uppercase;
+}
+.tt-full-width {
+    text-transform: full-width;
+}
+.tt-full-size-kana {
+    text-transform: full-size-kana;
+}
